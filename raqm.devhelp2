@@ -10,6 +10,7 @@
     <sub name="Index of new symbols in 0.3.x" link="api-index-0-3.html"/>
     <sub name="Index of new symbols in 0.6.x" link="api-index-0-6.html"/>
     <sub name="Index of new symbols in 0.7.x" link="api-index-0-7.html"/>
+    <sub name="Index of new symbols in 0.8.x" link="api-index-0-8.html"/>
     <sub name="Annotation Glossary" link="annotation-glossary.html"/>
   </chapters>
   <functions>
@@ -27,6 +28,8 @@
     <keyword type="function" name="raqm_add_font_feature ()" link="raqm-Raqm.html#raqm-add-font-feature" since="0.1"/>
     <keyword type="function" name="raqm_layout ()" link="raqm-Raqm.html#raqm-layout" since="0.1"/>
     <keyword type="function" name="raqm_get_glyphs ()" link="raqm-Raqm.html#raqm-get-glyphs" since="0.1"/>
+    <keyword type="function" name="raqm_get_par_resolved_direction ()" link="raqm-Raqm.html#raqm-get-par-resolved-direction" since="0.8"/>
+    <keyword type="function" name="raqm_get_direction_at_index ()" link="raqm-Raqm.html#raqm-get-direction-at-index" since="0.8"/>
     <keyword type="function" name="raqm_index_to_position ()" link="raqm-Raqm.html#raqm-index-to-position" since="0.2"/>
     <keyword type="function" name="raqm_position_to_index ()" link="raqm-Raqm.html#raqm-position-to-index" since="0.2"/>
     <keyword type="function" name="raqm_version ()" link="raqm-Raqm.html#raqm-version" since="0.7"/>

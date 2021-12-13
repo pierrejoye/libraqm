@@ -153,6 +153,22 @@
 </tr>
 <tr>
 <td class="function_type">
+<a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="returnvalue">raqm_direction_t</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="raqm-Raqm.html#raqm-get-par-resolved-direction" title="raqm_get_par_resolved_direction ()">raqm_get_par_resolved_direction</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="returnvalue">raqm_direction_t</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="raqm-Raqm.html#raqm-get-direction-at-index" title="raqm_get_direction_at_index ()">raqm_get_direction_at_index</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
 <span class="returnvalue">bool</span>
 </td>
 <td class="function_name">
@@ -1020,6 +1036,73 @@ and must not be freed. </p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="raqm-get-par-resolved-direction"></a><h3>raqm_get_par_resolved_direction ()</h3>
+<pre class="programlisting"><a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="returnvalue">raqm_direction_t</span></a>
+raqm_get_par_resolved_direction (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>);</pre>
+<p>Gets the resolved direction of the paragraph;</p>
+<div class="refsect3">
+<a name="raqm-get-par-resolved-direction.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>rq</p></td>
+<td class="parameter_description"><p>a <a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raqm-get-par-resolved-direction.returns"></a><h4>Returns</h4>
+<p>The <a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="type">raqm_direction_t</span></a> specifying the resolved direction of text,
+or <a class="link" href="raqm-Raqm.html#RAQM-DIRECTION-DEFAULT:CAPS"><span class="type">RAQM_DIRECTION_DEFAULT</span></a> if <a class="link" href="raqm-Raqm.html#raqm-layout" title="raqm_layout ()"><code class="function">raqm_layout()</code></a> has not been called on <em class="parameter"><code>rq</code></em>
+.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-8.html#api-index-0.8">0.8</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raqm-get-direction-at-index"></a><h3>raqm_get_direction_at_index ()</h3>
+<pre class="programlisting"><a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="returnvalue">raqm_direction_t</span></a>
+raqm_get_direction_at_index (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>,
+                             <em class="parameter"><code><span class="type">size_t</span> index</code></em>);</pre>
+<p>Gets the resolved direction of the character at specified index;</p>
+<div class="refsect3">
+<a name="raqm-get-direction-at-index.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>rq</p></td>
+<td class="parameter_description"><p>a <a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>index</p></td>
+<td class="parameter_description"><p>character index. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for input. Default is transfer none."><span class="acronym">in</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raqm-get-direction-at-index.returns"></a><h4>Returns</h4>
+<p>The <a class="link" href="raqm-Raqm.html#raqm-direction-t" title="enum raqm_direction_t"><span class="type">raqm_direction_t</span></a> specifying the resolved direction of text at the
+specified index, or <a class="link" href="raqm-Raqm.html#RAQM-DIRECTION-DEFAULT:CAPS"><span class="type">RAQM_DIRECTION_DEFAULT</span></a> if <a class="link" href="raqm-Raqm.html#raqm-layout" title="raqm_layout ()"><code class="function">raqm_layout()</code></a> has not been
+called on <em class="parameter"><code>rq</code></em>
+.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-8.html#api-index-0.8">0.8</a></p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="raqm-index-to-position"></a><h3>raqm_index_to_position ()</h3>
 <pre class="programlisting"><span class="returnvalue">bool</span>
 raqm_index_to_position (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>,
@@ -1264,7 +1347,7 @@ otherwise.</p>
 <hr>
 <div class="refsect2">
 <a name="RAQM-VERSION-MICRO:CAPS"></a><h3>RAQM_VERSION_MICRO</h3>
-<pre class="programlisting">#define RAQM_VERSION_MICRO 2
+<pre class="programlisting">#define RAQM_VERSION_MICRO 0
 </pre>
 <p>Library micro version component.</p>
 <p class="since">Since: <a class="link" href="api-index-0-7.html#api-index-0.7">0.7</a></p>
@@ -1272,7 +1355,7 @@ otherwise.</p>
 <hr>
 <div class="refsect2">
 <a name="RAQM-VERSION-MINOR:CAPS"></a><h3>RAQM_VERSION_MINOR</h3>
-<pre class="programlisting">#define RAQM_VERSION_MINOR 7
+<pre class="programlisting">#define RAQM_VERSION_MINOR 8
 </pre>
 <p>Library minor version component.</p>
 <p class="since">Since: <a class="link" href="api-index-0-7.html#api-index-0.7">0.7</a></p>
@@ -1280,7 +1363,7 @@ otherwise.</p>
 <hr>
 <div class="refsect2">
 <a name="RAQM-VERSION-STRING:CAPS"></a><h3>RAQM_VERSION_STRING</h3>
-<pre class="programlisting">#define RAQM_VERSION_STRING "0.7.2"
+<pre class="programlisting">#define RAQM_VERSION_STRING "0.8.0"
 </pre>
 <p>Library version as a string with three components.</p>
 <p class="since">Since: <a class="link" href="api-index-0-7.html#api-index-0.7">0.7</a></p>
