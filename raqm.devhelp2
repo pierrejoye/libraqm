@@ -11,12 +11,14 @@
     <sub name="Index of new symbols in 0.6.x" link="api-index-0-6.html"/>
     <sub name="Index of new symbols in 0.7.x" link="api-index-0-7.html"/>
     <sub name="Index of new symbols in 0.8.x" link="api-index-0-8.html"/>
+    <sub name="Index of new symbols in 0.9.x" link="api-index-0-9.html"/>
     <sub name="Annotation Glossary" link="annotation-glossary.html"/>
   </chapters>
   <functions>
     <keyword type="function" name="raqm_create ()" link="raqm-Raqm.html#raqm-create" since="0.1"/>
     <keyword type="function" name="raqm_reference ()" link="raqm-Raqm.html#raqm-reference" since="0.1"/>
     <keyword type="function" name="raqm_destroy ()" link="raqm-Raqm.html#raqm-destroy" since="0.1"/>
+    <keyword type="function" name="raqm_clear_contents ()" link="raqm-Raqm.html#raqm-clear-contents" since="0.9"/>
     <keyword type="function" name="raqm_set_text ()" link="raqm-Raqm.html#raqm-set-text" since="0.1"/>
     <keyword type="function" name="raqm_set_text_utf8 ()" link="raqm-Raqm.html#raqm-set-text-utf8" since="0.1"/>
     <keyword type="function" name="raqm_set_par_direction ()" link="raqm-Raqm.html#raqm-set-par-direction" since="0.1"/>
@@ -24,6 +26,7 @@
     <keyword type="function" name="raqm_set_freetype_face ()" link="raqm-Raqm.html#raqm-set-freetype-face" since="0.1"/>
     <keyword type="function" name="raqm_set_freetype_face_range ()" link="raqm-Raqm.html#raqm-set-freetype-face-range" since="0.1"/>
     <keyword type="function" name="raqm_set_freetype_load_flags ()" link="raqm-Raqm.html#raqm-set-freetype-load-flags" since="0.3"/>
+    <keyword type="function" name="raqm_set_freetype_load_flags_range ()" link="raqm-Raqm.html#raqm-set-freetype-load-flags-range" since="0.9"/>
     <keyword type="function" name="raqm_set_invisible_glyph ()" link="raqm-Raqm.html#raqm-set-invisible-glyph" since="0.6"/>
     <keyword type="function" name="raqm_add_font_feature ()" link="raqm-Raqm.html#raqm-add-font-feature" since="0.1"/>
     <keyword type="function" name="raqm_layout ()" link="raqm-Raqm.html#raqm-layout" since="0.1"/>

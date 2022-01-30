@@ -65,6 +65,14 @@
 </tr>
 <tr>
 <td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raqm-Raqm.html#raqm-clear-contents" title="raqm_clear_contents ()">raqm_clear_contents</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
 <span class="returnvalue">bool</span>
 </td>
 <td class="function_name">
@@ -117,6 +125,14 @@
 </td>
 <td class="function_name">
 <a class="link" href="raqm-Raqm.html#raqm-set-freetype-load-flags" title="raqm_set_freetype_load_flags ()">raqm_set_freetype_load_flags</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">bool</span>
+</td>
+<td class="function_name">
+<a class="link" href="raqm-Raqm.html#raqm-set-freetype-load-flags-range" title="raqm_set_freetype_load_flags_range ()">raqm_set_freetype_load_flags_range</a> <span class="c_punctuation">()</span>
 </td>
 </tr>
 <tr>
@@ -500,7 +516,7 @@ raqm_destroy (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#r
  by one. If the result is zero, then <em class="parameter"><code>rq</code></em>
 
 and all associated resources are freed.
-See <code class="function">cairo_reference()</code>.</p>
+See <a class="link" href="raqm-Raqm.html#raqm-reference" title="raqm_reference ()"><code class="function">raqm_reference()</code></a>.</p>
 <div class="refsect3">
 <a name="raqm-destroy.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -517,6 +533,30 @@ See <code class="function">cairo_reference()</code>.</p>
 </table></div>
 </div>
 <p class="since">Since: <a class="link" href="api-index-0-1.html#api-index-0.1">0.1</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raqm-clear-contents"></a><h3>raqm_clear_contents ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raqm_clear_contents (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>);</pre>
+<p>Clears internal state of previously used raqm_t object, making it ready
+for reuse and keeping some of allocated memory to increase performance.</p>
+<div class="refsect3">
+<a name="raqm-clear-contents.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>rq</p></td>
+<td class="parameter_description"><p>a <a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-9.html#api-index-0.9">0.9</a></p>
 </div>
 <hr>
 <div class="refsect2">
@@ -619,7 +659,7 @@ Bidirectional Algorithm, so when the text is mainly right-to-left (with or
 without some left-to-right) text, then the base direction should be set to
 <a class="link" href="raqm-Raqm.html#RAQM-DIRECTION-RTL:CAPS"><span class="type">RAQM_DIRECTION_RTL</span></a> and vice versa.</p>
 <p>The default is <a class="link" href="raqm-Raqm.html#RAQM-DIRECTION-DEFAULT:CAPS"><span class="type">RAQM_DIRECTION_DEFAULT</span></a>, which determines the paragraph
-direction based on the first character with strong bidi type (see <a class="ulink" href="http://unicode.org/reports/tr9/#P2" target="_top">rule
+direction based on the first character with strong bidi type (see <a class="ulink" href="https://unicode.org/reports/tr9/#P2" target="_top">rule
 P2</a> in Unicode Bidirectional Algorithm),
 which can be good enough for many cases but has problems when a mainly
 right-to-left paragraph starts with a left-to-right character and vice versa
@@ -867,24 +907,80 @@ older version the flags will be ignored.</p>
 </div>
 <hr>
 <div class="refsect2">
+<a name="raqm-set-freetype-load-flags-range"></a><h3>raqm_set_freetype_load_flags_range ()</h3>
+<pre class="programlisting"><span class="returnvalue">bool</span>
+raqm_set_freetype_load_flags_range (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>,
+                                    <em class="parameter"><code><span class="type">int</span> flags</code></em>,
+                                    <em class="parameter"><code><span class="type">size_t</span> start</code></em>,
+                                    <em class="parameter"><code><span class="type">size_t</span> len</code></em>);</pre>
+<p>Sets the load flags passed to FreeType when loading glyphs for <em class="parameter"><code>len</code></em>
+-number
+of characters staring at <em class="parameter"><code>start</code></em>
+. Flags should be the same as used by the
+client when rendering corresponding FreeType glyphs. The <em class="parameter"><code>start</code></em>
+ and <em class="parameter"><code>len</code></em>
+
+are input string array indices (i.e. counting bytes in UTF-8 and scaler
+values in UTF-32).</p>
+<p>This method can be used repeatedly to set different flags for different
+parts of the text. It is the responsibility of the client to make sure that
+flag ranges cover the whole text.</p>
+<p>This requires version of HarfBuzz that has <code class="function">hb_ft_font_set_load_flags()</code>, for
+older version the flags will be ignored.</p>
+<p>See also <a class="link" href="raqm-Raqm.html#raqm-set-freetype-load-flags" title="raqm_set_freetype_load_flags ()"><code class="function">raqm_set_freetype_load_flags()</code></a>.</p>
+<div class="refsect3">
+<a name="raqm-set-freetype-load-flags-range.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>rq</p></td>
+<td class="parameter_description"><p>a <a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>flags</p></td>
+<td class="parameter_description"><p>FreeType load flags.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>start</p></td>
+<td class="parameter_description"><p>index of first character that should use <em class="parameter"><code>flags</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len</p></td>
+<td class="parameter_description"><p>number of characters using <em class="parameter"><code>flags</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raqm-set-freetype-load-flags-range.returns"></a><h4>Returns</h4>
+<p><code class="literal">true</code> if no errors happened, <code class="literal">false</code> otherwise.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-9.html#api-index-0.9">0.9</a></p>
+</div>
+<hr>
+<div class="refsect2">
 <a name="raqm-set-invisible-glyph"></a><h3>raqm_set_invisible_glyph ()</h3>
 <pre class="programlisting"><span class="returnvalue">bool</span>
 raqm_set_invisible_glyph (<em class="parameter"><code><a class="link" href="raqm-Raqm.html#raqm-t" title="raqm_t"><span class="type">raqm_t</span></a> *rq</code></em>,
                           <em class="parameter"><code><span class="type">int</span> gid</code></em>);</pre>
 <p>Sets the glyph id to be used for invisible glyhphs.</p>
 <p>If <em class="parameter"><code>gid</code></em>
- is negative, invisible glyphs will be suppressed from the output.
-This requires HarfBuzz 1.8.0 or later. If raqm is used with an earlier
-HarfBuzz version, the return value will be <code class="literal">false</code> and the shaping behavior
-does not change.</p>
+ is negative, invisible glyphs will be suppressed from the output.</p>
 <p>If <em class="parameter"><code>gid</code></em>
- is zero, invisible glyphs will be rendered as space.
-This works on all versions of HarfBuzz.</p>
+ is zero, invisible glyphs will be rendered as space.</p>
 <p>If <em class="parameter"><code>gid</code></em>
- is a positive number, it will be used for invisible glyphs.
-This requires a version of HarfBuzz that has
-<code class="function">hb_buffer_set_invisible_glyph()</code>. For older versions, the return value
-will be <code class="literal">false</code> and the shaping behavior does not change.</p>
+ is a positive number, it will be used for invisible glyphs.</p>
 <div class="refsect3">
 <a name="raqm-set-invisible-glyph.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table class="informaltable" width="100%" border="0">
@@ -1355,7 +1451,7 @@ otherwise.</p>
 <hr>
 <div class="refsect2">
 <a name="RAQM-VERSION-MINOR:CAPS"></a><h3>RAQM_VERSION_MINOR</h3>
-<pre class="programlisting">#define RAQM_VERSION_MINOR 8
+<pre class="programlisting">#define RAQM_VERSION_MINOR 9
 </pre>
 <p>Library minor version component.</p>
 <p class="since">Since: <a class="link" href="api-index-0-7.html#api-index-0.7">0.7</a></p>
@@ -1363,7 +1459,7 @@ otherwise.</p>
 <hr>
 <div class="refsect2">
 <a name="RAQM-VERSION-STRING:CAPS"></a><h3>RAQM_VERSION_STRING</h3>
-<pre class="programlisting">#define RAQM_VERSION_STRING "0.8.0"
+<pre class="programlisting">#define RAQM_VERSION_STRING "0.9.0"
 </pre>
 <p>Library version as a string with three components.</p>
 <p class="since">Since: <a class="link" href="api-index-0-7.html#api-index-0.7">0.7</a></p>
